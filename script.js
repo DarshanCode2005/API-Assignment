@@ -1,9 +1,11 @@
-const BASE_URL = "http://43.205.110.71:8000";
+// Replace this with your deployed Vercel proxy URL:
+const PROXY_BASE = "https://api-proxy-rouge.vercel.app/";
+
 const categoryTabs = document.getElementById("category-tabs");
 const itemsContainer = document.getElementById("items-container");
 
 async function loadCategories() {
-  const res = await fetch(`${BASE_URL}/categories`);
+  const res = await fetch(`${PROXY_BASE}?path=/categories`);
   const categories = await res.json();
 
   categories.forEach(({ category }) => {
@@ -23,7 +25,7 @@ async function loadCategories() {
 async function loadItemsByCategory(cat) {
   itemsContainer.innerHTML = "<p>Loading items...</p>";
   try {
-    const res = await fetch(`${BASE_URL}/categories/${cat}/items`);
+    const res = await fetch(`${PROXY_BASE}?path=/categories/${cat}/items`);
     const items = await res.json();
     renderItems(items);
   } catch (err) {
@@ -64,7 +66,7 @@ async function fetchItemById() {
   itemsContainer.innerHTML = "<p>Loading item...</p>";
 
   try {
-    const res = await fetch(`${BASE_URL}/items/${id}`);
+    const res = await fetch(`${PROXY_BASE}?path=/items/${id}`);
     if (!res.ok) throw new Error("Item not found");
     const item = await res.json();
     renderItems([item]);
@@ -74,7 +76,7 @@ async function fetchItemById() {
   }
 }
 
-//Fetch items by batch ID range
+// Fetch items by batch ID range
 async function fetchItemsByRange() {
   const min = document.getElementById("range-min").value;
   const max = document.getElementById("range-max").value;
@@ -83,12 +85,12 @@ async function fetchItemsByRange() {
     alert("Min ID should be less than Max ID");
     return;
   }
-  const catres = await fetch(`${BASE_URL}/items/batch?ids=${min},${max}`);
-  const data = await catres.json();
 
   itemsContainer.innerHTML = "<p>Loading range...</p>";
 
   try {
+    const res = await fetch(`${PROXY_BASE}?path=/items/batch&query=ids=${min},${max}`);
+    const data = await res.json();
     renderItems(data);
   } catch (err) {
     itemsContainer.innerHTML = "<p>Failed to fetch items in range.</p>";
