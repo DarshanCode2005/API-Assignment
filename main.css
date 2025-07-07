@@ -1,0 +1,162 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Header */
+header {
+  background-color: #222;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* Category Tabs */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+nav button {
+  background-color: #444;
+  border: none;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+nav button:hover {
+  background-color: #ff6600;
+}
+
+nav button.active {
+  background-color: #ff6600;
+}
+
+/* Controls Panel */
+.controls {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.controls div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.controls h3 {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.controls input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 200px;
+}
+
+.controls button {
+  margin-top: 0.3rem;
+  padding: 0.45rem 0.9rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.controls button:hover {
+  background-color: #0056b3;
+}
+
+/* Items Grid */
+#items-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* Item Card */
+.item-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+}
+
+.item-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.item-card h3 {
+  font-size: 1.1rem;
+  margin: 0.8rem 1rem 0.4rem;
+  color: #222;
+}
+
+.item-card p {
+  margin: 0.2rem 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.item-card p strong {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  header {
+    align-items: center;
+  }
+}

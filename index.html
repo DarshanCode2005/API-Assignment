@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snappy E-Commerce</title>
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+  <header>
+    <h1>Snappy E-Commerce</h1>
+    <nav id="category-tabs"></nav>
+  </header>
+
+  <section class="controls">
+    <div>
+      <h3>🔍 Fetch Item by ID</h3>
+      <input type="text" id="item-id-input" placeholder="Enter Item ID"/>
+      <button onclick="fetchItemById()">Fetch</button>
+    </div>
+
+    <div>
+      <h3>🔢 Fetch Items by ID Range</h3>
+      <label>Min ID: <input type="number" id="range-min" value="1"/></label>
+      <label>Max ID: <input type="number" id="range-max" value="10"/></label>
+      <button onclick="fetchItemsByRange()">Fetch Range</button>
+    </div>
+  </section>
+
+  <main>
+    <section id="items-container"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
